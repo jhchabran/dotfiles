@@ -62,9 +62,13 @@ if has("autocmd")
         \| exe "normal g'\"" | endif
 endif
 
+set directory=~/.vim/swap,.
+
 " configure easytags to run ctags after saving the buffer
 let g:easytags_events = ['BufWritePost']
 let g:easytags_async = 1
+set tags=./tags
+let g:easytags_dynamic_files = 1
 
 function s:setupWrapping()
   set wrap
