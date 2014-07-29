@@ -20,6 +20,7 @@ require bash-completion
 require build-essential
 require python-software-properties
 require software-properties-common
+require tmux
 require vim-nox
 require git-core
 require curl
@@ -52,9 +53,12 @@ done
 
 echo "Setuping Vim"
 
-mkdir -p  ~/.vim/bundle
+if [ ! -d ~/.vim ] || [ ! -d ~/.vim/bundle ]
+then
+  mkdir -p  ~/.vim/bundle
+fi
 
-if [ ! -f ~/.vim/bundle/neobundle.vim ]
+if [ ! -d ~/.vim/bundle/neobundle.vim ]
 then
   git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 else
@@ -94,11 +98,9 @@ gem install foreman
 gem install CoffeeTags
 gem install pry
 
-echo "Installing Java 7" 
+echo "Installing Java" 
 
-sudo add-apt-repository ppa:webupd8team/java
-require oracle-java7-installer
-require oracle-java7-set-default
+sudo apt-get install openjdk-7-jre-headless
 
 echo "Installing Clojure" 
 echo "Installing leiningen"
@@ -115,15 +117,11 @@ else
 	echo "Skipping leiningen script, already installed"
 fi
 
-~/.bin/lein deps
-
 echo "Installing NodeJS"
 
 sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
 require nodejs
-require npm
-
 
 echo "Setuping projects structure"
 
