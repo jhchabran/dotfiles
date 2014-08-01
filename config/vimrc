@@ -182,6 +182,10 @@ let g:ruby_path = system('echo $HOME/.rbenv/shims')
 set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
+let g:solarized_termtrans = 1
+set t_Co=16
+let g:solarized_termcolors=16
+
 
 " Use a space to split vertically
 set fillchars+=vert:\ 
