@@ -145,6 +145,12 @@ map <Leader>c :CtrlPCurFile<CR>
 map <Leader>b :CtrlPBuffer<CR>
 map <Leader>m :CtrlPMRUFiles<CR>
 
+" Git bindings
+map <Leader>gs :Gstatus<CR>
+map <Leader>gc :Gcommit<CR>
+map <Leader>gd :Gdiff<CR>
+map <Leader>gb :Gblame<CR>
+
 " If we're under Ubuntu, adjust ack's command
 if !filereadable("/usr/bin/ack")
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -164,19 +170,6 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-
-" Rails / Ruby related
-map <leader>rl :.Rake<cr>
-map <leader>rr :Rake<cr>
-
-" Clojure stuff
-" let tlist_clojure_settings = 'clojure;f:function'
-
-" Show me some files so I don't get confused by the same filenames
-map <leader>n :NERDTreeToggle<cr>
-map <leader>t :CtrlPTag
-" map <leader>rt :!bundle list --paths=true \| xargs ctags --extra=+f --exclude=.git --exclude=log --exclude='*.js*' -R *
-
 " Insert CRs with ease
 nmap <S-Return> i<Return><Esc>
 nmap <Return> o<Esc>
@@ -186,14 +179,8 @@ map //  :nohlsearch<CR>; echo 'Search highlight cleared' <CR>
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
 
-if &term =~ '256color'
-  " Disable Background Color Erase (BCE) so that color schemes
-  " work properly when Vim is used inside tmux and GNU screen.
-  " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
-endif
-
 set background=dark
+let g:solarized_termtrans=1
 colorscheme solarized
 
 " Use a space to split vertically
