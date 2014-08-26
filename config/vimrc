@@ -140,6 +140,7 @@ let g:ctrlp_jump_to_buffer = 1
 
 let g:ctrlp_custom_ignore = 'vendor/bundle$'
 
+map <C-w>t :tabnew<CR>
 map <Leader>f :CtrlPRoot<CR>
 map <Leader>c :CtrlPCurFile<CR>
 map <Leader>b :CtrlPBuffer<CR>
