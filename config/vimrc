@@ -7,7 +7,6 @@ syntax on
 
 set number
 set ruler
-syntax on
 set encoding=utf-8
 set hidden
 
