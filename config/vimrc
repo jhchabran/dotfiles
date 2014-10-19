@@ -156,9 +156,6 @@ if !filereadable("/usr/bin/ack")
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 endif
 
-command Notes e ~/.notes
-command Todo Ack TODO
-command ShowUtf8 /[^[:print:]]
 
 " ban arrows movements
 map <up> <nop>
@@ -190,3 +187,30 @@ let g:solarized_termcolors=16
 " Use a space to split vertically
 set fillchars+=vert:\ 
 highlight clear VertSplit 
+
+" Some handy stuff
+command Notes e ~/.notes.md
+command Halp e ~/.bin/halp
+command Todo Ack TODO
+command ShowUtf8 /[^[:print:]]
+command Dark ! ~/gnome-terminal-colors-solarized/set_dark.sh | set background=dark<CR>
+command Light ! ~/gnome-terminal-colors-solarized/set_light.sh | set background=dark<CR>
+
+" Snippets configuration
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif

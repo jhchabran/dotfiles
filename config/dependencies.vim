@@ -14,6 +14,7 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-commentary'
@@ -31,9 +32,12 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'slim-template/vim-slim'
 
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'endel/vim-github-colorscheme'
 
 call neobundle#end() 
 	
