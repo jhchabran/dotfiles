@@ -191,3 +191,5 @@ let g:solarized_termcolors=16
 " Use a space to split vertically
 set fillchars+=vert:\ 
 highlight clear VertSplit 
+hi VertSplit None
+
