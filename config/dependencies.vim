@@ -30,7 +30,9 @@ NeoBundle 'xolox/vim-misc', 'master'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-rails'
+NeoBundle 'slim-template/vim-slim'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
