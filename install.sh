@@ -41,7 +41,7 @@ echo "Copying dotfiles"
 
 for file in config/* 
 do
-	if [ -f ~/$(basename $file) ] || [ -L ~/$(basename $file) ]
+  if [ -f ~/$(basename $file) ] || [ -d ~/$(basename $file) ] || [ -L ~/$(basename $file) ]
 	then
 		echo "$(basename $file) exists, moving it to $(basename $file).old"
 		mv ~/$(basename $file) ~/$(basename $file).old
