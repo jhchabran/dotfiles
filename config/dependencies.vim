@@ -38,6 +38,9 @@ NeoBundle 'slim-template/vim-slim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'endel/vim-github-colorscheme'
+NeoBundle 'romainl/Apprentice'
+NeoBundle 'flazz/vim-colorschemes'
+
 
 call neobundle#end() 
 	
