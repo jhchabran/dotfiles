@@ -189,6 +189,7 @@ colorscheme apprentice
 " Use a space to split vertically
 set fillchars+=vert:\ 
 highlight clear VertSplit 
+hi VertSplit None
 
 " Some handy stuff
 command Notes e ~/.notes.md
