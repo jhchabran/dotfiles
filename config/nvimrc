@@ -177,13 +177,7 @@ map //  :nohlsearch<CR>; echo 'Search highlight cleared' <CR>
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
 
 set background=dark
-"let g:solarized_termtrans=1
-"colorscheme solarized
-"let g:solarized_termtrans = 1
-"set t_Co=16
-"let g:solarized_termcolors=16
-set t_Co=256
-colorscheme apprentice
+colorscheme solarized " Thank you true colors, it's so damn easier now
 
 
 " Use a space to split vertically
@@ -196,8 +190,6 @@ command Notes e ~/.notes.md
 command Halp e ~/.bin/halp
 command Todo Ack TODO
 command ShowUtf8 /[^[:print:]]
-command Dark ! ~/gnome-terminal-colors-solarized/set_dark.sh | set background=dark<CR>
-command Light ! ~/gnome-terminal-colors-solarized/set_light.sh | set background=dark<CR>
 
 " Snippets configuration
 " Plugin key-mappings.

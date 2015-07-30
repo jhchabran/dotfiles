@@ -62,6 +62,8 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
+
+source $(brew --prefix)/etc/bash_completion
 export PS1='$(__git_ps1) \w\$ '
 
 # If this is an xterm set the title to user@host:dir
@@ -112,10 +114,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
-export EDITOR='vim'
+export EDITOR='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 export PATH="$HOME/.rbenv/bin:$HOME/bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 eval "$(rbenv init -)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export GOPATH="$HOME/code/go"
