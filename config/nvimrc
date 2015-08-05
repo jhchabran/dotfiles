@@ -61,7 +61,8 @@ if has("autocmd")
         \| exe "normal g'\"" | endif
 endif
 
-set directory=~/.vim/swap,.
+set backupdir=~/.nvim/swap,/tmp,.
+set directory=~/.nvim/swap,/tmp,.
 
 " configure easytags to run ctags after saving the buffer
 let g:easytags_events = ['BufWritePost']
