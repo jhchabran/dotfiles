@@ -137,8 +137,7 @@ let g:ctrlp_working_path_mode = 2
 " au BufEnter * cal ctrlp#SetWorkingPath(2) 
 let g:ctrlp_mru_files = 1 
 let g:ctrlp_jump_to_buffer = 1
-
-let g:ctrlp_custom_ignore = 'vendor/bundle$'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 map <C-w>t :tabnew<CR>
 map <Leader>f :CtrlPRoot<CR>
