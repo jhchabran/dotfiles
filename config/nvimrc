@@ -176,9 +176,6 @@ map //  :nohlsearch<CR>; echo 'Search highlight cleared' <CR>
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
 
-set background=dark
-colorscheme solarized " Thank you true colors, it's so damn easier now
-
 
 " Use a space to split vertically
 set fillchars+=vert:\ 
@@ -209,3 +206,8 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+set background=dark
+" https://github.com/neovim/neovim/issues/2953
+autocmd VimEnter * colorscheme solarized " Thank you true colors, it's so damn easier now
+
