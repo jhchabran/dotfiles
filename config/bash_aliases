@@ -7,3 +7,7 @@ alias bx='bundle exec'
 alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias vi='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+
+alias cdc='cd ~/code/' 
+alias cdh='cd ~/code/heetch'
+alias cdhg='cd ~/code/heetch/go/src/github.com/heetch'
