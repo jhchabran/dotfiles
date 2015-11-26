@@ -9,6 +9,7 @@ set number
 set ruler
 set encoding=utf-8
 set hidden
+set mouse= 
 
 let mapleader = "\<Space>" 
 nnoremap <Space> <nop>
@@ -117,6 +118,10 @@ map <Leader><Leader> <c-^>
 map <Leader>w :w<CR>
 map <Leader>q :bw<CR>
 
+" OS clipboard
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
+
 function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'), 'file')
@@ -145,27 +150,30 @@ map <Leader>c :CtrlPCurFile<CR>
 map <Leader>b :CtrlPBuffer<CR>
 map <Leader>m :CtrlPMRUFiles<CR>
 
+map <Leader>p :TagbarToggle<CR>
+
+
 " Git bindings
-map <Leader>gs :Gstatus<CR>
-map <Leader>gc :Gcommit<CR>
-map <Leader>gd :Gdiff<CR>
-map <Leader>gb :Gblame<CR>
+map <Leader><Leader>gs :Gstatus<CR>
+map <Leader><Leader>gc :Gcommit<CR>
+map <Leader><Leader>gd :Gdiff<CR>
+map <Leader><Leader>gb :Gblame<CR>
 
 " If we're under Ubuntu, adjust ack's command
-if !filereadable("/usr/bin/ack")
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-endif
+"if !filereadable("/usr/bin/ack") || !filereadable("/usr/local/bin/ack")
+"  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+"endif
 
 
 " ban arrows movements
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+"map <up> <nop>
+"map <down> <nop>
+"map <left> <nop>
+"map <right> <nop>
+"imap <up> <nop>
+"imap <down> <nop>
+"imap <left> <nop>
+"imap <right> <nop>
 
 " Insert CRs with ease
 nmap <S-Return> i<Return><Esc>
@@ -190,9 +198,9 @@ command ShowUtf8 /[^[:print:]]
 
 " Snippets configuration
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -208,6 +216,36 @@ if has('conceal')
 endif
 
 set background=dark
-" https://github.com/neovim/neovim/issues/2953
-autocmd VimEnter * colorscheme solarized " Thank you true colors, it's so damn easier now
 
+" https://github.com/neovim/neovim/issues/2953
+autocmd VimEnter * colorscheme jellybeans " Thank you true colors, it's so damn easier now
+"let g:gruvbox_contrast_light="soft"
+
+"" GO
+au BufRead,BufNewFile *.go set noet ts=4 sw=4
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>c <Plug>(go-build)
+au FileType go nmap <leader>q <Plug>(go-test)
+au FileType go nmap <leader>o <Plug>(go-coverage)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+
+nmap <Leader>[ :NERDTreeToggle<CR>
+
+" Fix Quickfix showing in the tagbar
+autocmd FileType qf wincmd J
+
+"let g:go_fmt_command = "goimports"
+set conceallevel=0
