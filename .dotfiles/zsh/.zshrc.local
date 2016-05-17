@@ -1,0 +1,30 @@
+#Alias Git
+alias g=git
+alias ggpush="git push origin "
+alias ggpull="git push origin"
+alias git_cleanup_merged_branches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
+
+#alias divers
+alias restart_audio="sudo kextunload /System/Library/Extensions/AppleHDA.kext; sudo kextload /System/Library/Extensions/AppleHDA.kext"
+alias reset_sound="sudo killall coreaudiod"
+alias flush_dns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias p="ssh -t florian@192.168.1.51 'tmux attach || tmux'"
+alias t="tmux attach || tmux"
+
+#alias Code
+alias heetch="cd ~/gocode/src/github.com/heetch/"
+alias gou="cd ~/gocode/src/github.com/heetch/universe && source scripts/env.sh"
+alias goh="cd ~/gocode/src/github.com/heetch/heetch"
+alias gom="cd ~/gocode/src/github.com/heetch/mesosphere-deployment"
+
+export PATH=~/gocode/src/github.com/heetch/universe/bin:~/gocode/src/github.com/heetch/universe/vendor/bin:$PATH
+
+export DISPLAY_MAC=`ifconfig en0 | grep "inet " | cut -d " " -f2`:0
+
+function startx() {
+    if [ -z "$(ps -ef|grep XQuartz|grep -v grep)" ] ; then
+        open -a XQuartz
+        socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &
+    fi
+}
