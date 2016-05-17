@@ -101,9 +101,9 @@ brew bundle --file=- <<EOF
   brew "tree"
 
   #devOps
-  brew "https://raw.githubusercontent.com/Homebrew/legacy-homebrew/ed0585bab57f3ed14e6db06c4a6db09140e9a835/Library/Formula/ansible.rb"
+  #brew "https://raw.githubusercontent.com/Homebrew/legacy-homebrew/ed0585bab57f3ed14e6db06c4a6db09140e9a835/Library/Formula/ansible.rb"
   brew "awscli"
-  brew "rsync"
+  #brew "rsync"
   #brew "bmon"
   brew "vegeta"
 
@@ -134,6 +134,7 @@ append_to_zshrc "#Go configuration"
 append_to_zshrc "export GOPATH=~/gocode"
 #append_to_zshrc "export GOROOT=/usr/local/Cellar/go/1.6.2/libexec"
 append_to_zshrc "export PATH=$PATH:~/gocode/bin"
+mkdir -p ~/gocode
 
 brew cask install \
   google-chrome \
@@ -169,6 +170,11 @@ gem update --system
 gem_install_or_update 'bundler'
 number_of_cores=$(sysctl -n hw.ncpu)
 bundle config --global jobs $((number_of_cores - 1))
+
+fancy_echo "installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+append_to_zshrc "plugins=(git)"
+append_to_zshrc 'ZSH_THEME="robbyrussell"'
 
 fancy_echo "updating dot files"
 ./update_dot_files
