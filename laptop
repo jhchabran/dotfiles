@@ -147,6 +147,7 @@ brew cask install \
   skype \
   sublime-text \
   flux \
+  alfred \
   franz
 
 fancy_echo "configuring Ruby"
