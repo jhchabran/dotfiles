@@ -18,6 +18,8 @@ alias gou="cd ~/gocode/src/github.com/heetch/universe && source scripts/env.sh"
 alias goh="cd ~/gocode/src/github.com/heetch/heetch"
 alias gom="cd ~/gocode/src/github.com/heetch/mesosphere-deployment"
 
+alias subl="reattach-to-user-namespace /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+
 export PATH=~/gocode/src/github.com/heetch/universe/bin:~/gocode/src/github.com/heetch/universe/vendor/bin:$PATH
 
 export DISPLAY_MAC=`ifconfig en0 | grep "inet " | cut -d " " -f2`:0
