@@ -3,6 +3,7 @@ alias g=git
 alias ggpush="git push origin "
 alias ggpull="git push origin"
 alias git_cleanup_merged_branches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
+alias h="cd "
 
 #alias divers
 alias restart_audio="sudo kextunload /System/Library/Extensions/AppleHDA.kext; sudo kextload /System/Library/Extensions/AppleHDA.kext"
@@ -13,7 +14,7 @@ alias p="ssh -t florian@192.168.1.51 'tmux attach || tmux'"
 alias t="tmux attach || tmux"
 
 #alias Code
-alias heetch="cd ~/gocode/src/github.com/heetch/"
+alias h="cd ~/gocode/src/github.com/heetch/"
 alias gou="cd ~/gocode/src/github.com/heetch/universe && source scripts/env.sh"
 alias goh="cd ~/gocode/src/github.com/heetch/heetch"
 alias gom="cd ~/gocode/src/github.com/heetch/mesosphere-deployment"
