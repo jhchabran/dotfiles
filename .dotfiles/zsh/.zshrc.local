@@ -3,7 +3,6 @@ alias g=git
 alias ggpush="git push origin "
 alias ggpull="git push origin"
 alias git_cleanup_merged_branches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
-alias h="cd "
 
 #alias divers
 alias restart_audio="sudo kextunload /System/Library/Extensions/AppleHDA.kext; sudo kextload /System/Library/Extensions/AppleHDA.kext"
