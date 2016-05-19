@@ -20,6 +20,9 @@ alias gom="cd ~/gocode/src/github.com/heetch/mesosphere-deployment"
 
 alias subl="reattach-to-user-namespace /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
+
+alias dcos="docker run -it -v ~/.config_apps/dcos:/root/.dcos jess/dcos-cli"
+
 export PATH=~/gocode/src/github.com/heetch/universe/bin:~/gocode/src/github.com/heetch/universe/vendor/bin:$PATH
 
 export DISPLAY_MAC=`ifconfig en0 | grep "inet " | cut -d " " -f2`:0
