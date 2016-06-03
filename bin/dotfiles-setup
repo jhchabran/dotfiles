@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# dotfiles-setup
+#
+# `dotfiles-setup` handles installation, updates, things like that. Run it periodically
+# to make sure you're on the latest and greatest.
+
+export DOTFILES_PATH=$HOME/.dotfiles
+
+# Set OS X defaults
+echo "› set default OSX values"
+$DOTFILES_PATH/recipes/osx/set-defaults.sh
+
+echo "› update OSX"
+$DOTFILES_PATH/recipes/osx/install-updates.sh
+
+echo "› install/update homebrew"
+$DOTFILES_PATH/recipes/homebrew/install.sh 2>&1
+
+# Install software
+echo "› $DOTFILES_PATH/recipes/setup.sh"
+$DOTFILES_PATH/recipes/setup.sh
+
+# Update dotfiles
+echo "› $DOTFILES_PATH/recipes/update-dotfiles.sh"
+$DOTFILES_PATH/recipes/update-dotfiles.sh

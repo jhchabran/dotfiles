@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Install OSX updates
+
+exec $DOTFILES_PATH/recipes/osx/install-updates.sh

@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Sets OS X defaults by running $DOTFILES_PATH/osx/set-defaults.sh.
+
+exec $DOTFILES_PATH/recipes/osx/set-defaults.sh
