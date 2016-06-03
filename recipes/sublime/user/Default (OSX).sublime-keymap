@@ -1,0 +1,4 @@
+[
+  { "keys": ["super+y"], "command": "goto_definition" },
+  { "keys": ["super+shift+w"], "command": "close_others" },
+]
