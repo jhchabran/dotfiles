@@ -7,7 +7,6 @@ fi
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
-echo "Loading fpath"
 fpath=($DOTFILES_PATH/recipes/functions $fpath)
 
 autoload -U $DOTFILES_PATH/recipes/functions/*(:t)

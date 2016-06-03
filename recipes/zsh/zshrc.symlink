@@ -9,7 +9,7 @@ export PROJECTS=~/Code
 # you'll have access to them in your scripts.
 if [[ -a ~/.localrc ]]
 then
-  echo "Loading ~/.localrc ..."
+  #echo "Loading ~/.localrc ..."
   source ~/.localrc
 fi
 
@@ -20,14 +20,14 @@ config_files=($DOTFILES_PATH/recipes/*/*.zsh)
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
 do
-  echo "Loading path $file ..."
+  #echo "Loading path $file ..."
   source $file
 done
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
-  echo "Loading all but path and completion $file ..."
+  #echo "Loading all but path and completion $file ..."
   source $file
 done
 
@@ -38,7 +38,7 @@ compinit
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
 do
-  echo "Loading completion $file ..."
+  #echo "Loading completion $file ..."
   source $file
 done
 
