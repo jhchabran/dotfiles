@@ -2,6 +2,7 @@ cask_args appdir: '/Applications'
 
 tap "caskroom/versions"
 tap "homebrew/dupes"
+tap "caskroom/fonts"
 
 # Unix
 brew "ack"
@@ -67,3 +68,9 @@ cask "alfred"
 cask "franz"
 cask "sublime-text3"
 cask "vlc"
+
+
+# Fonts
+#
+cask "font-meslo-lg-for-powerline"
+cask "font-meslo-lg"

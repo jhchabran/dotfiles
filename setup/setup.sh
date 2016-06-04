@@ -36,3 +36,4 @@ announce "updating shell to ZSH"
 # find the installers and run them iteratively
 find $DOTFILES_PATH/recipes -name install.sh | while read installer ; do sh -c "${installer}" ; done
 
+./update-dotfiles.sh
