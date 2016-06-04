@@ -1,17 +1,26 @@
-# Laptop
+# Dotfiles
 
-Laptop is a set of scripts used to setup and maintain my laptop up-to-date! 
+Those are my dotfiles.
 
-## Usage
+## Install
 
-Run the whole script
+Clone this repository to ~/.dotfiles
+
 ```
-./laptop
+git clone git@github.com:arkan/dotfiles.git ~/.dotfiles
 ```
 
-Update dotfiles
+
+Then install the dotfiles
 ```
-./update_dot_files
+~/.dotfiles/setup/setup.sh
+```
+
+
+And from time to time, feel free to run the following command to keep your system up-to-date(OSX, Brew, and dotfiles)
+
+```
+dotfiles-update
 ```
 
 ## Licence 
