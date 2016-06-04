@@ -3,7 +3,7 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
-alias -g ..="cd .."
+alias ..="cd .."
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
