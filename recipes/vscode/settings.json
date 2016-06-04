@@ -1,0 +1,17 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "go.buildOnSave": false,
+    "go.lintOnSave": true,
+    "go.vetOnSave": true,
+    "go.buildTags": "",
+    "go.buildFlags": [],
+    "go.lintFlags": [],
+    "go.vetFlags": [],
+    "go.coverOnSave": false,
+    "go.useCodeSnippetsOnFunctionSuggest": false,
+    "go.formatOnSave": true,
+    "go.formatTool": "goreturns",
+    "go.goroot": "/usr/local/Cellar/go/1.6.2/libexec",
+    "go.gopath": "$GOPATH:${workspaceRoot}:${workspaceRoot}/vendor",
+    "go.gocodeAutoBuild": false
+}

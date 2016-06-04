@@ -3,34 +3,15 @@
 # bootstrap installs things.
 
 cd "$(dirname "$0")"
-DOTFILES_ROOT=$(pwd -P)
+DOTFILES_PATH="$HOME/.dotfiles"
 
 set -e
 
-echo ''
-
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
-}
-
-user () {
-  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
-}
-
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
-}
-
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.local.symlink ]
+  announce "Setting up Git config"
+  if ! [ -f "$DOTFILES_PATH/recipes/git/gitconfig.local.symlink" ]
   then
-    info 'setup gitconfig'
+     announce "building config" 1
 
     git_credential='cache'
     if [ "$(uname -s)" == "Darwin" ]
@@ -38,19 +19,23 @@ setup_gitconfig () {
       git_credential='osxkeychain'
     fi
 
-    user ' - What is your github author name?'
+    announce 'What is your github author name?' 1
     read -e git_authorname
-    user ' - What is your github author email?'
+    announce ' - What is your github author email?' 1
     read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" "$DOTFILES_PATH/recipes/git/gitconfig.local.symlink.example" > "$DOTFILES_PATH/recipes/git/gitconfig.local.symlink"
 
-    success 'gitconfig'
+    announce "build completed" 1
+  else
+    announce "build already exist. Delete it and retry if necessary: $DOTFILES_PATH/recipes/git/gitconfig.local.symlink" 1
   fi
 }
 
 
 link_file () {
+  announce "linking $1 to $2"
+
   local src=$1 dst=$2
 
   local overwrite= backup= skip=
@@ -71,7 +56,7 @@ link_file () {
 
       else
 
-        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        announce "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
@@ -103,13 +88,13 @@ link_file () {
     if [ "$overwrite" == "true" ]
     then
       rm -rf "$dst"
-      success "removed $dst"
+      success "removed $dst" 1
     fi
 
     if [ "$backup" == "true" ]
     then
       mv "$dst" "${dst}.backup"
-      success "moved $dst to ${dst}.backup"
+      success "moved $dst to ${dst}.backup" 1
     fi
 
     if [ "$skip" == "true" ]
@@ -126,31 +111,16 @@ link_file () {
 }
 
 install_dotfiles () {
-  info 'installing dotfiles'
+  announce 'installing dotfiles'
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
+  for src in $(find -H "$DOTFILES_PATH/recipes" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
   do
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
 }
 
-setup_gitconfig
+# setup_gitconfig
 install_dotfiles
-
-# If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  if source bin/dot > /tmp/dotfiles-dot 2>&1
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
-fi
-
-echo ''
-echo '  All installed!'

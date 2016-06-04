@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+prefix="› "
+LEVEL=${2:-0}
+
+if [[ "$1" == "" ]] || [[ "$1" == "--help" ]]; then
+  echo "Usage $0 MESSAGE [INDENTATION]"
+  exit 0
+fi
+
+for (( i = 0; i < $LEVEL; i++ )); do
+  prefix="  $prefix"
+done
+
+printf "\r\033[2K\033[00;32m$prefix$1\033[0m\n"

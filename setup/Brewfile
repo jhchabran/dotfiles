@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
-tap caskroom/versions
+tap "caskroom/versions"
+tap "homebrew/dupes"
 
 # Unix
 brew "ack"

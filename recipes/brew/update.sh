@@ -1,2 +1,7 @@
-echo "› updating Homebrew formulae"
+#!/bin/bash
+set -e
+
+announce "updating brew"
 brew update
+
+exec success "done"

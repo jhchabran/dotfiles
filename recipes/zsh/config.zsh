@@ -7,9 +7,9 @@ fi
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
-fpath=($DOTFILES_PATH/recipes/functions $fpath)
+fpath=($DOTFILES_PATH/functions $fpath)
 
-autoload -U $DOTFILES_PATH/recipes/functions/*(:t)
+autoload -U $DOTFILES_PATH/functions/*(:t)
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000

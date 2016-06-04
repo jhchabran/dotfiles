@@ -1,8 +1,13 @@
 #!/bin/sh
 #
-# Link Sublime settings
-mkdir -p ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
+set -e
+
+announce "restoring sublime text 3 settings"
+
+mkdir -p "~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/"
 
 for settings in $DOTFILES_PATH/recipes/sublime/user/*; do
-  ln -sf $DOTFILES_PATH/recipes/sublime/user/"$settings" ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/"$settings"
+  ln -sf "$DOTFILES_PATH/recipes/sublime/user/$settings" "~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/$settings"
 done
+
+exec success "done"
