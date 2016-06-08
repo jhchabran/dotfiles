@@ -1,4 +1,4 @@
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like
