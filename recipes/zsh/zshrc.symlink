@@ -43,3 +43,6 @@ do
 done
 
 unset config_files
+
+# Automatically set by fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

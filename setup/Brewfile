@@ -23,6 +23,7 @@ brew "wget"
 brew "jq"
 brew "tree"
 brew "ssh-copy-id"
+brew "neovim/neovim/neovim"
 
 #devOps
 #brew "https://raw.githubusercontent.com/Homebrew/legacy-homebrew/ed0585bab57f3ed14e6db06c4a6db09140e9a835/Library/Formula/ansible.rb"
