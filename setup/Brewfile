@@ -69,6 +69,7 @@ cask "alfred"
 cask "franz"
 cask "sublime-text3"
 cask "vlc"
+cask "soundcast" # to forward sound to a chromecast device
 
 
 # Fonts
