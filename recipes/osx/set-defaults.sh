@@ -39,3 +39,7 @@
 #defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 #defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
 #defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+
+# Disable Shake to Find Cursor in OS X El Capitan for Mac
+defaults write ~/Library/Preferences/.GlobalPreferences CGDisableCursorLocationMagnification -bool YES
