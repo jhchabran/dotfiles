@@ -10,7 +10,8 @@ set -g @plugin 'tmux-plugins/tmux-sidebar'
 
 #run-shell /Users/arkan/Development/tmux/tmux-cpu/cpu.tmux
 set -g status-right-length 90
-set -g status-right "Host: #(hostname) | Battery: #{battery_percentage} |#(uptime | rev | cut -d":" -f1 | rev | sed s/,//g ) | %a %h-%d %H:%M  "
+#set -g status-right "Host: #(hostname) | Battery: #{battery_percentage} |#(uptime | rev | cut -d":" -f1 | rev | sed s/,//g ) | %a %h-%d %H:%M  "
+set -g status-right "Host: #(hostname) |#(uptime | rev | cut -d":" -f1 | rev | sed s/,//g ) | %a %h-%d %H:%M  "
 # set -g status-right "CPU: #{cpu_percentage} | %a %h-%d %H:%M "
 
 #Custom configuration
