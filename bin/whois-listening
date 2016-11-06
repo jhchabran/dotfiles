@@ -1,4 +1,12 @@
 #!/bin/bash
+set -e
+
+if [[ -z "$1" ]]; then
+  echo "Usage: $0 PORT"
+  echo "For example, to know what is currently listening on port 8080, use"
+  echo "$0 8080"
+  exit 1
+fi
 
 lsof -n -i4TCP:$1 | grep LISTEN
 
