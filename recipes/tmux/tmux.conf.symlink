@@ -1,55 +1,110 @@
-# List of plugins
+# To have tmux-plugins installed, you must run
+#
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#
+# And then in tmux, PREFIX + I to install all the plugins
+# To update plugins, PREFIX + U
+#
+
+#------------------------------------------------------------------------------
+# Plugins
+#------------------------------------------------------------------------------
+
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tmux-plugins/tmux-cpu'
-set -g @plugin 'tmux-plugins/tmux-battery'
-#set -g @plugin 'tmux-plugins/tmux-copycat'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @plugin 'tmux-plugins/tmux-urlview'
-set -g @plugin 'tmux-plugins/tmux-sidebar'
 
-#run-shell /Users/arkan/Development/tmux/tmux-cpu/cpu.tmux
-set -g status-right-length 90
-#set -g status-right "Host: #(hostname) | Battery: #{battery_percentage} |#(uptime | rev | cut -d":" -f1 | rev | sed s/,//g ) | %a %h-%d %H:%M  "
-set -g status-right "Host: #(hostname) |#(uptime | rev | cut -d":" -f1 | rev | sed s/,//g ) | %a %h-%d %H:%M  "
-# set -g status-right "CPU: #{cpu_percentage} | %a %h-%d %H:%M "
+#------------------------------------------------------------------------------
+# Settings
+#------------------------------------------------------------------------------
 
-#Custom configuration
 set -g assume-paste-time 0
 set-option -g repeat-time 0
 # Removes ESC delay
 set -sg escape-time 0
+
+# Increase the history
+set -g history-limit 10000
+
+# Automatically renumber tmux windows
+set -g renumber-windows on
+
+# Enable mouse support
+set -g mouse on
+# make scrolling with wheels work (disabled at it doesn't work anymore. Why?)
+# bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
+# bind -n WheelDownPane select-pane -t= \; send-keys -M
+
+# Dot not automatically rename windows
+setw -g automatic-rename off
+set-option -g allow-rename off
+
+# Start indexing at 1 instead of 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+# Activity monitoring
+setw -g monitor-activity on
+set -g visual-activity off  # Prevent Tmux from displaying the annoying Activity in window X messages
+
+set -g visual-silence on
+setw -g monitor-silence 0
+
+# This is used to make copy from vim to osx clipboard works
+set -g default-shell $SHELL
+set -g default-command "reattach-to-user-namespace -l ${SHELL}"
+
+# Automatically rename the window title to the current folder name
+set -g window-status-format '#I:#(pwd="#{pane_current_path}"; echo ${pwd####*/})#F'
+set -g window-status-current-format '#I:#(pwd="#{pane_current_path}"; echo ${pwd####*/})#F'
+set-option -g status-interval 1
+
+# more settings to make copy-mode more vim-like
+setw -g mode-keys vi
+bind Escape copy-mode
+bind P paste-buffer #p is already used to go to the previous window
+bind -t vi-copy 'v' begin-selection
+bind -t vi-copy 'y' copy-selection
+
+#------------------------------------------------------------------------------
+# Key bindings
+#------------------------------------------------------------------------------
+
+# # remap prefix from 'C-b' to 'C-a'
+# unbind C-b
+# set-option -g prefix C-a
+# bind-key C-a send-prefix
 
 # This is to force tmux to open new panel/windows in the same directory
 bind '%' split-window -h -c '#{pane_current_path}'  # Split panes horizontal
 bind '"' split-window -v -c '#{pane_current_path}'  # Split panes vertically
 bind c new-window -c '#{pane_current_path}' # Create new window
 
-#set-option -g mouse on
-#bind -n WheelUpPane copy-mode
+# split panes using | and - (easier to remember)
+bind | split-window -h -c '#{pane_current_path}'  # Split panes horizontal
+bind - split-window -v -c '#{pane_current_path}'  # Split panes vertically
+# I haven't unbinded the default bindings just in case (for the moment)
+#unbind '"'
+#unbind %
 
-set -g mouse on
-# make scrolling with wheels work
-bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
-bind -n WheelDownPane select-pane -t= \; send-keys -M
+#------------------------------------------------------------------------------
+# Status bar
+#------------------------------------------------------------------------------
 
-setw -g automatic-rename off
-set-option -g allow-rename off
+set -g status-right-length 90
+set -g status-right "Host: #(hostname) |#(uptime | rev | cut -d":" -f1 | rev | sed s/,//g ) | %a %h-%d %H:%M  "
+
+#------------------------------------------------------------------------------
+# Theme
+#------------------------------------------------------------------------------
+
+set -g default-terminal "screen-256color"
 
 set -g status-bg colour234
 set -g status-fg colour137
 
-
-# Activity monitoring
-setw -g monitor-activity on
-#set -g visual-activity on
-
-set -g default-terminal "screen-256color"
-
 set-option -g status-bg colour235 #base02
 set-option -g status-fg colour136 #yellow
 set-option -g status-attr default
-
 
 # default window title colors
 set-window-option -g window-status-fg colour244 #base0
@@ -69,12 +124,9 @@ set-option -g pane-active-border-fg colour240 #base01
 set-option -g message-bg colour235 #base02
 set-option -g message-fg colour166 #orange
 
-
-# plugin 'tmux-plugins/tmux-sidebar' customization
-set -g @sidebar-tree-command 'tree -C'
-set -g @sidebar-tree-width '60'
-
-#set-option default-path "$PWD"
+#------------------------------------------------------------------------------
+# Plugins customization and run
+#------------------------------------------------------------------------------
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
