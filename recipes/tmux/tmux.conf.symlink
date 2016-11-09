@@ -43,7 +43,7 @@ set -g base-index 1
 setw -g pane-base-index 1
 
 # Activity monitoring
-setw -g monitor-activity on
+setw -g monitor-activity off
 set -g visual-activity off  # Prevent Tmux from displaying the annoying Activity in window X messages
 
 set -g visual-silence on
