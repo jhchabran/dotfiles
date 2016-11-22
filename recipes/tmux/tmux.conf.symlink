@@ -79,14 +79,11 @@ bind '%' split-window -h -c '#{pane_current_path}'  # Split panes horizontal
 bind '"' split-window -v -c '#{pane_current_path}'  # Split panes vertically
 bind c new-window -c '#{pane_current_path}' # Create new window
 
-# bind PREFIX+q to quit the current window
-unbind q
-bind q confirm-before -p "kill the current window? (y/n)" kill-window
-
-# bind PREFIX+q to quit the current pane
+# bind PREFIX+w to quit the current window
 unbind w
-# bind w confirm-before -p "kill-pane (y/n)" kill-pane
-bind w kill-pane
+bind w confirm-before -p "kill the current window? (y/n)" kill-window
+unbind W
+bind W kill-window
 
 # split panes using | and - (easier to remember)
 bind | split-window -h -c '#{pane_current_path}'  # Split panes horizontal
