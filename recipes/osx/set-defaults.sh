@@ -43,3 +43,7 @@
 
 # Disable Shake to Find Cursor in OS X El Capitan for Mac
 defaults write ~/Library/Preferences/.GlobalPreferences CGDisableCursorLocationMagnification -bool YES
+
+## Disable -- to be turned to — (emdash)
+defaults write 'Apple Global Domain' NSAutomaticDashSubstitutionEnabled 0
+
