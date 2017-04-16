@@ -3,6 +3,7 @@ cask_args appdir: '/Applications'
 tap "caskroom/versions"
 tap "homebrew/dupes"
 tap "caskroom/fonts"
+tap "neovim/neovim"
 
 # Unix
 brew "ack"
@@ -29,7 +30,7 @@ brew "neovim/neovim/neovim"
 #brew "https://raw.githubusercontent.com/Homebrew/legacy-homebrew/ed0585bab57f3ed14e6db06c4a6db09140e9a835/Library/Formula/ansible.rb"
 brew "awscli"
 brew "rsync"
-#brew "bmon"
+brew "bmon"
 brew "vegeta"
 
 #Go
@@ -48,17 +49,15 @@ brew "rbenv"
 brew "ruby-build"
 
 # Databases
-brew "postgres", restart_service: true
-brew "redis", restart_service: true
-brew "rabbitmq", restart_service: true
+#brew "postgres", restart_service: true
+#brew "redis", restart_service: true
+#brew "rabbitmq", restart_service: true
 
 #Divers
 brew "youtube-dl"
 
-cask "google-chrome"
 cask "slack"
 cask "spotify"
-cask "deezer"
 cask "iterm2"
 cask "spectacle"
 cask "cyberduck"
@@ -67,12 +66,11 @@ cask "skype"
 cask "flux"
 cask "alfred"
 cask "franz"
-cask "sublime-text3"
+cask "sublime-text"
 cask "vlc"
-cask "soundcast" # to forward sound to a chromecast device
-
+cask "airfoil" # to forward sound to a chromecast device
 
 # Fonts
 #
-cask "font-meslo-lg-for-powerline"
+cask "font-meslo-for-powerline"
 cask "font-meslo-lg"

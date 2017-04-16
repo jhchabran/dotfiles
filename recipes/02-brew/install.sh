@@ -8,6 +8,8 @@ set -e
 
 HOMEBREW_PREFIX="/usr/local"
 
+cd "$(dirname $0)"
+
 announce "brew"
 announce "checking installation" 1
 
@@ -31,6 +33,6 @@ if brew list | grep -Fq brew-cask; then
   brew uninstall --force brew-cask
 fi
 
-announce "installation completed" 1
-exec success "done"
+
+brew bundle
 

@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-#
-# bootstrap installs things.
+set -e
 
 cd "$(dirname "$0")"
-DOTFILES_PATH="$HOME/.dotfiles"
-
-set -e
+export DOTFILES_PATH=$HOME/.dotfiles
+export PATH=$DOTFILES_PATH/bin:$PATH
 
 setup_gitconfig () {
   announce "Setting up Git config"
