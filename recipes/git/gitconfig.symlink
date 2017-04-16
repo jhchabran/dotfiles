@@ -9,6 +9,20 @@
         wtf     = !$DOTFILES_PATH/bin/git-wtf
         rank-contributors = !$DOTFILES_PATH/bin/git-rank-contributors
         count   = !git shortlog -sn
+
+        glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+        # No need for a GUI - a nice, colorful, graphical representation
+        # https://git-scm.com/docs/git-log
+        # via https://medium.com/@payload.dd/thanks-for-the-git-st-i-will-use-this-4da5839a21a4
+
+        stash-all = stash save --include-untracked
+        # We wanna grab those pesky un-added files!
+        # https://git-scm.com/docs/git-stash
+[merge]
+        ff = only
+        # I pretty much never mean to do a real merge, since I use a rebase workflow.
+        # Note: this global option applies to all merges, including those done during a git pull
+        # https://git-scm.com/docs/git-config#git-config-mergeff
 [color]
         diff = auto
         status = auto
@@ -31,7 +45,7 @@
         # for more information on different options of the below setting.
         #
         # Setting to git 2.0 default to suppress warning message
-	default = current
+	      default = current
 [filter "lfs"]
 	smudge = git-lfs smudge %f
 	required = true
