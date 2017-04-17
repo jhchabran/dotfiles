@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $*\n\n"
 echo ''

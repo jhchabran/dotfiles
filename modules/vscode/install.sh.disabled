@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 mkdir -p ~/Library/Application Support/Code/User

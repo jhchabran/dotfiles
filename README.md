@@ -1,6 +1,8 @@
 # Dotfiles
 
-Those are my dotfiles.
+Those are my dotfiles and are meant to be used on a macOS computer.
+
+Everything is splitted in modules making the maintainance and the evolutions easy.
 
 ## Install
 
@@ -11,16 +13,17 @@ git clone git@github.com:arkan/dotfiles.git ~/.dotfiles
 ```
 
 
-Then install the dotfiles
+Then install the dotfiles:
 ```
-~/.dotfiles/setup/setup.sh
+~/.dotfiles/setup.sh
 ```
 
+The script will ask for information regarding Git configuration(name, email), computer name as well as sudo password.
 
-And from time to time, feel free to run the following command to keep your system up-to-date(OSX, Brew, and dotfiles)
+And from time to time, feel free to run the following command to keep your system up-to-date(OSX, Brew, and dotfiles).
 
 ```
-dotfiles-update
+dotfiles-apply
 ```
 
 ## Licence 
