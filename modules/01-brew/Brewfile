@@ -1,0 +1,76 @@
+cask_args appdir: '/Applications'
+
+tap "caskroom/versions"
+tap "homebrew/dupes"
+tap "caskroom/fonts"
+tap "neovim/neovim"
+
+# Unix
+brew "ack"
+brew "ctags"
+brew "coreutils"
+brew "grc"
+brew "jp2a"
+brew "git"
+brew "openssl"
+#brew "rcm"
+brew "reattach-to-user-namespace"
+brew "the_silver_searcher"
+brew "tmux"
+brew "vim"
+brew "zsh"
+brew "htop"
+brew "wget"
+brew "jq"
+brew "tree"
+brew "ssh-copy-id"
+brew "neovim/neovim/neovim"
+brew "tmate"
+
+# OSX
+brew "dockutil"
+
+#devOps
+#brew "https://raw.githubusercontent.com/Homebrew/legacy-homebrew/ed0585bab57f3ed14e6db06c4a6db09140e9a835/Library/Formula/ansible.rb"
+brew "awscli"
+brew "rsync"
+brew "bmon"
+brew "vegeta"
+
+# GitHub
+brew "hub"
+
+# Image manipulation
+brew "imagemagick"
+
+# Programming languages
+brew "libyaml" # should come after openssl
+brew "node"
+brew "rbenv"
+brew "ruby-build"
+brew "go"
+
+# Databases
+#brew "postgres", restart_service: true
+#brew "redis", restart_service: true
+#brew "rabbitmq", restart_service: true
+
+#Divers
+brew "youtube-dl"
+cask "slack"
+cask "spotify"
+cask "iterm2"
+cask "spectacle"
+cask "cyberduck"
+cask "dropbox"
+cask "skype"
+cask "flux"
+cask "alfred"
+cask "franz"
+cask "sublime-text"
+cask "vlc"
+cask "airfoil" # to forward sound to a chromecast device
+
+# Fonts
+cask "font-meslo-for-powerline"
+cask "font-meslo-lg"

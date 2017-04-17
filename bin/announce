@@ -10,7 +10,7 @@ if [[ "$1" == "" ]] || [[ "$1" == "--help" ]]; then
 fi
 
 for (( i = 0; i < $LEVEL; i++ )); do
-  prefix="  $prefix"
+  prefix="   $prefix"
 done
 
 printf "\r\033[2K\033[00;32m$prefix$1\033[0m\n"

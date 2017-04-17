@@ -5,6 +5,10 @@ cd "$(dirname "$0")"
 export DOTFILES_PATH=$HOME/.dotfiles
 export PATH=$DOTFILES_PATH/bin:$PATH
 
-find $DOTFILES_PATH/recipes -name install.sh | while read file ; do announce "$file"; bash "${file}" ; done
+for file in $DOTFILES_PATH/modules/*/install.sh; do
+	announce "Installing module $file"
+	bash $file
+done
 
+announce "Creating/Updating symlinks"
 ./update_symlinks.sh
