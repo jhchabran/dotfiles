@@ -70,6 +70,9 @@ cask "franz"
 cask "sublime-text"
 cask "vlc"
 cask "airfoil" # to forward sound to a chromecast device
+cask "tunnelblick"
+cask "docker"
+cask "dash"
 
 # Fonts
 cask "font-meslo-for-powerline"
