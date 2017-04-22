@@ -4,7 +4,7 @@ set -e
 cd "$(dirname $0)"
 
 if ! [ -f "computer_name" ]; then
-	announce "How to you want to name your computer?" 2
+	announce "How to you want to name your computer?" 1
 	read -e computer_name
 	echo $computer_name > computer_name
 else
