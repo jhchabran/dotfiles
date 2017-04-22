@@ -5,4 +5,8 @@ cd "$(dirname "$0")"
 export DOTFILES_PATH=$HOME/.dotfiles
 export PATH=$DOTFILES_PATH/bin:$PATH
 
-find $DOTFILES_PATH/modules -name update.sh | while read file; do announce "$file"; bash $file ; done
+for file in $DOTFILES_PATH/modules/*/update.sh; do
+	announce "Updating module $file"
+	bash $file
+done
+
