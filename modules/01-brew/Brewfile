@@ -51,6 +51,7 @@ brew "ruby-build"
 brew "go"
 
 # Databases
+cask "postico"
 #brew "postgres", restart_service: true
 #brew "redis", restart_service: true
 #brew "rabbitmq", restart_service: true
