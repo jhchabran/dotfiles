@@ -49,6 +49,7 @@ brew "node"
 brew "rbenv"
 brew "ruby-build"
 brew "go"
+casl "visual-studio-code"
 
 # Databases
 cask "postico"
