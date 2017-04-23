@@ -1,2 +1,3 @@
 modules/git/gitconfig.local.symlink
 modules/02-osx/computer_name
+modules/private_*

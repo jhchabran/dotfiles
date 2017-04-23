@@ -8,7 +8,7 @@ defaults write com.apple.dock tilesize -int 46
 defaults write com.apple.finder AppleWindowTabbingMode -string "manual"
 
 ## Dock: Lock the Dock size
-defaults write com.apple.dock size-immutable -bool true
+defaults write com.apple.dock size-immutable -bool false
 
 ## Dock: Dock magnification
 defaults write com.apple.dock magnification -bool true
@@ -29,7 +29,7 @@ defaults write com.apple.dock 'orientation' -string 'bottom'
 defaults write com.apple.dock pinning -string 'middle'
 
 ## Dock: Lock the Dock position
-defaults write com.apple.dock position-immutable -bool true
+defaults write com.apple.dock position-immutable -bool false
 
 ## Dock: Double-click a window's title bar to: None, Mimimize, Maximize (zoom)
 defaults write NSGlobalDomain AppleActionOnDoubleClick -string "None"
