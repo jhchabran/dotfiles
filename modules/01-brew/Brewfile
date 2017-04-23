@@ -26,6 +26,7 @@ brew "tree"
 brew "ssh-copy-id"
 brew "neovim/neovim/neovim"
 brew "tmate"
+brew "dnsmasq"
 
 # OSX
 brew "dockutil"
