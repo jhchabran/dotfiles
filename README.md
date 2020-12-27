@@ -26,5 +26,7 @@ And from time to time, feel free to run the following command to keep your syste
 dotfiles-apply
 ```
 
-## Licence 
+## Licence
 It is free software, and may be redistributed under the terms specified in the [LICENSE](./LICENCE) file.
+
+defaults write com.apple.finder CreateDesktop false
