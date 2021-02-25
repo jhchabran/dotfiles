@@ -1,4 +1,4 @@
-export EDITOR='nvim'
+export EDITOR='emacsclient -nw'
 
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like
@@ -13,3 +13,11 @@ fi
 
 # Enable SSH-Agent
 eval "$(ssh-agent -s > /dev/null)"
+
+# Autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+# export TERM=xterm-24bit
+
+export LC_ALL=en_US.UTF-8
+export GIT_GET_PATH=$PROJECTS/src

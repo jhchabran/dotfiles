@@ -2,7 +2,7 @@
 set -e
 
 
-name=$(cat computername)
+name=$(cat computer_name)
 
 
 # General Settings

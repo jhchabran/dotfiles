@@ -3,7 +3,7 @@ set -e
 
 cd "$(dirname $0)"
 
-command -v dnsmasq >/dev/null 2>&1 || { announce "dnsmasq is not installed. Install it first" 1; exit 1; }
+#command -v dnsmasq >/dev/null 2>&1 || { announce "dnsmasq is not installed. Install it first" 1; exit 1; }
 
 announce "configuring dnsmasq" 1
 cp dnsmasq.conf /usr/local/etc/dnsmasq.conf

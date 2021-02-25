@@ -12,6 +12,7 @@
 
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
 #------------------------------------------------------------------------------
 # Settings
@@ -60,30 +61,24 @@ set-option -g status-interval 1
 
 # more settings to make copy-mode more vim-like
 setw -g mode-keys vi
-bind Escape copy-mode
-bind P paste-buffer #p is already used to go to the previous window
-bind -t vi-copy 'v' begin-selection
-bind -t vi-copy 'y' copy-selection
+# bind Escape copy-mode
+# bind P paste-buffer #p is already used to go to the previous window
 
 #------------------------------------------------------------------------------
 # Key bindings
 #------------------------------------------------------------------------------
 
-# # remap prefix from 'C-b' to 'C-a'
-# unbind C-b
-# set-option -g prefix C-a
-# bind-key C-a send-prefix
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+bind Tab last-window
 
 # This is to force tmux to open new panel/windows in the same directory
 bind '%' split-window -h -c '#{pane_current_path}'  # Split panes horizontal
 bind '"' split-window -v -c '#{pane_current_path}'  # Split panes vertically
 bind c new-window -c '#{pane_current_path}' # Create new window
-
-# bind PREFIX+w to quit the current window
-unbind w
-bind w confirm-before -p "kill the current window? (y/n)" kill-window
-unbind W
-bind W kill-window
 
 # split panes using | and - (easier to remember)
 bind | split-window -h -c '#{pane_current_path}'  # Split panes horizontal
@@ -97,38 +92,22 @@ bind - split-window -v -c '#{pane_current_path}'  # Split panes vertically
 #------------------------------------------------------------------------------
 
 set -g status-right-length 90
-set -g status-right "Host: #(hostname) |#(uptime | rev | cut -d":" -f1 | rev | sed s/,//g ) | %a %h-%d %H:%M  "
+set -g status-right "Host: #(hostname) |#(uptime | rev | cut -d":" -f1 | rev | sed s/,//g )"
 
 #------------------------------------------------------------------------------
 # Theme
 #------------------------------------------------------------------------------
 
 set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",xterm-256color:Tc"
+set-option -sa terminal-overrides ',XXX:RGB'
+set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
 
-set -g status-bg colour234
-set -g status-fg colour137
-
-set-option -g status-bg colour235 #base02
-set-option -g status-fg colour136 #yellow
-set-option -g status-attr default
-
-# default window title colors
-set-window-option -g window-status-fg colour244 #base0
-set-window-option -g window-status-bg default
-#set-window-option -g window-status-attr dim
-
-# active window title colors
-set-window-option -g window-status-current-fg colour166 #orange
-set-window-option -g window-status-current-bg default
-#set-window-option -g window-status-current-attr bright
-
-# pane border
-set-option -g pane-border-fg colour235 #base02
-set-option -g pane-active-border-fg colour240 #base01
-
-# message text
-set-option -g message-bg colour235 #base02
-set-option -g message-fg colour166 #orange
+# https://jonasjacek.github.io/colors/
+set -g status-bg colour234 # dark gray
+set -g status-fg colour137 # salmon
+set-option -g status-bg colour235 #dark gray
+set-option -g status-fg colour253 #gray
 
 #------------------------------------------------------------------------------
 # Plugins customization and run

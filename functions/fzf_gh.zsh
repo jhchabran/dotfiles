@@ -13,4 +13,4 @@ fzf-gh-issues() {
   local issue_id=$(echo $res | awk '{ print $1 }')
   gh issue view --web $issue_id
 }
- 
+

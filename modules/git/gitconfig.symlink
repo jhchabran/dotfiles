@@ -32,6 +32,7 @@
         excludesfile = ~/.gitignore
         editor = vim
         pager = less -x3
+	hooksPath = /Users/tech/.global_git_hooks
 [apply]
         whitespace = nowarn
 [mergetool]
@@ -52,3 +53,11 @@
 	clean = git-lfs clean %f
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[github]
+	user = jhchabran
+[user]
+	signingkey = 760A6CB63D78428251B1C4A5E5F3206DFB78FD7C
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true

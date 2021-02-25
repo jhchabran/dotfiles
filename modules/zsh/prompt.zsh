@@ -63,14 +63,9 @@ zstyle ':vcs_info:*'    actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|
 
 # export PROMPT='${vcs_info_msg_0_}'
 
-export PROMPT=$'$(directory_name)›'
-set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}${vcs_info_msg_1_}%{$reset_color%}"
-  # export RPROMPT='${vcs_info_msg_1_}'
-}
+export PROMPT=$'$(directory_name)%{$fg_bold[cyan]%}${vcs_info_msg_1_}%{$reset_color%}› '
 
 precmd() {
   title "zsh" "%m" "%55<...<%~"
-  set_prompt
   vcs_info
 }

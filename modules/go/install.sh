@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-mkdir -p "~/gocode"
+mkdir -p "~/Code"

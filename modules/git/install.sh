@@ -8,3 +8,5 @@ if [[ ! -f "gitconfig.local.symlink" ]]; then
 	exit 1
 fi
 
+# TODO check if go get exists before installing it
+go get -u github.com/icholy/git-get

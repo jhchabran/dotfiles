@@ -4,7 +4,7 @@ else
   export PS1='%3~$(git_info_for_prompt)%# '
 fi
 
-export LSCOLORS="exfxcxdxbxegedabagacad"
+# export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
 fpath=($DOTFILES_PATH/functions $fpath)
@@ -26,7 +26,7 @@ setopt EXTENDED_HISTORY # add timestamps to history
 setopt PROMPT_SUBST
 setopt CORRECT
 setopt COMPLETE_IN_WORD
-setopt IGNORE_EOF
+# setopt IGNORE_EOF
 
 setopt APPEND_HISTORY # adds history
 setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
@@ -46,3 +46,4 @@ bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
+
