@@ -24,6 +24,7 @@ current = current_font()
 # Get the available fonts from the OS
 res = run("kitty list-fonts")
 fonts = [s for s in res.split("\n") if s.find("    ") == -1 and len(s) > 0 and s not in excluded]
+fonts.append("Lekton") # I have no idea why this one doesn't get added to the list. It works perfectly.
 
 # Locate the index of the current one
 try:
