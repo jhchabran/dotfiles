@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+
+########### README.md
+## # Fonts
+## 
+## `kitty-font.py` allows to change the current font used by [kitty](https://sw.kovidgoyal.net/kitty/). It only works on OSX.
+## 
+## Because there is, AFAIK, no direct way to achieve that, the script is a mix of python and apple script. Yup, ductape all the way 😆 !
+## 
+## ## Installation
+## 
+## ### Fonts 
+## 
+## The script only selects fonts that kitty supports. See my [Brewfile](./Brewfile) for a list of fonts. These can be installed by running `brew bundle install` in this directory.
+## 
+## ### Setup
+## 
+## In order to work, the script requires a specific config file for the kitty font to be present: 
+## 
+## ```
+## $ cat ~/.config/kitty/font.conf 
+## font_family Inconsolata
+## ```
+## 
+## That config must be included from the main kitty configuration: 
+## 
+## ```
+## $ cat ~/.config/kitty/kitty.conf 
+## include font.conf # <---- the mandatory include statement
+## bold auto
+## italic_font auto
+## bold_italic_font auto
+## 
+## # (...)
+## ```
+## 
+## ## Running
+## 
+## Simply calling `kitty-font.py` or `kitty-font.py prev` will: 
+## 
+## 1. Get a list of fonts (statically assigned)
+## 2. Find the next one in the above list of fonts, based on the current one.
+## 3. Edit the font configuration file (`font.conf` in the kitty config directory)
+## 4. Run some apple script that will tell kitty to reload its configuration.
+## 
+## ### Useful bindings
+## 
+## Adding some mappings to the kitty configuration make the whole process really easy: 
+## 
+## ```
+## map cmd+y launch --copy-env kitty-font
+## map cmd+u launch --copy-env kitty-font prev
+## ```
+########### README.md
+
+import subprocess
+import re
+import os
+import sys
+from os.path import expanduser
+
+fonts = [
+        "Anonymice Nerd Font Regular",
+        "BlexMono Nerd Font Book",
+        "CaskaydiaCove Nerd Font Book",
+        "FiraCode Nerd Font Retina",
+        "FiraMono Nerd Font Regular",
+        "GoMono Nerd Font Mono Book",
+        "Hack Nerd Font Regular",
+        "Hasklug Nerd Font Regular",
+        "Inconsolata Nerd Font Medium",
+        "JetBrainsMono Nerd Font Regular",
+        "Lekton Nerd Font",
+        "OverpassMono Nerd Font Regular"]
+
+font_cfg_path = expanduser("~") + '/.config/kitty/font.conf'
+direction = -1 if len(sys.argv) > 1 and sys.argv[1] == "prev" else 1
+
+def run(command):
+    args = command.split(" ")
+    return subprocess.run(args, stdout=subprocess.PIPE).stdout.decode("utf-8")
+
+def current_font():
+    with open(font_cfg_path) as reader:
+        line = reader.readline()
+        return re.sub('font_family ', '', line).strip()
+
+current = current_font()
+
+# Locate the index of the current one
+try:
+    idx = fonts.index(current)
+except ValueError:
+    idx = 0
+
+# Set the next font as the current one
+with open(font_cfg_path, 'w') as f:
+    i = (idx + direction) % len(fonts)
+    print('switching to ' + fonts[i])
+    f.write('font_family ' + fonts[i])
+
+# Run some apple script to tell kitty to reload the config
+script = """
+osascript <<EOF
+activate application "kitty"
+tell application "System Events" to keystroke "," using {control down, command down}
+EOF
+"""
+os.system(script)

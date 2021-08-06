@@ -1,7 +1,0 @@
-#!/bin/sh
-
-set -e
-
-export DOTFILES_PATH=$HOME/.dotfiles
-
-$DOTFILES_PATH/setup.sh

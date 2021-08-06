@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-prefix="› "
+prefix="➡️  "
 LEVEL=${2:-0}
 
 if [[ "$1" == "" ]] || [[ "$1" == "--help" ]]; then

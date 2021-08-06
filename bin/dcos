@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-docker run -i -e PAGER=cat -v ~/.config_apps/dcos:/root/.dcos arkan/dcos-cli $@

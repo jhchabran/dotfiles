@@ -55,9 +55,33 @@
 	insteadOf = https://github.com/
 [github]
 	user = jhchabran
+	oauth-token = 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
 [user]
 	signingkey = 760A6CB63D78428251B1C4A5E5F3206DFB78FD7C
 [pull]
 	rebase = true
 [rebase]
 	autoStash = true
+[init]
+	defaultBranch = main
+[http]
+	cookiefile = /Users/tech/.gitcookies
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = line-numbers
+    whitespace-error-style = 22 reverse
+    line-numbers-left-format = "{nm:>4}"
+    line-numbers-right-format = "{np:>4} "
+    hunk-header-decoration-style = none
+    syntax-theme = none
+    side-by-side = true
+

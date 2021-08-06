@@ -1,6 +1,0 @@
-#!/bin/sh
-#
-# Source: https://hackernoon.com/a-story-of-a-fat-go-binary-20edc6549b97
-
-eval `go build -work -a 2>&1` && find $WORK -type f -name "*.a" | xargs -I{} du -hxs "{}" | gsort -rh | sed -e s:${WORK}/::g
-

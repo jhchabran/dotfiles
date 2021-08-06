@@ -28,6 +28,11 @@ And from time to time, feel free to run the following command to keep your syste
 dotfiles-update
 ```
 
+### Dependencies
+
+- https://github.com/dandavison/delta
+
 ## Licence
 
 It is free software, and may be redistributed under the terms specified in the [LICENSE](./LICENCE) file.
+

@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-reattach-to-user-namespace "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" $@
