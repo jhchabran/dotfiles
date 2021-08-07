@@ -8,4 +8,5 @@ brew "git"
 brew "git-delta"
 brew "neovim", args: ["HEAD"]
 brew "ripgrep"
+brew "autojump"
 brew "zsh-completions"
