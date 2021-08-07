@@ -53,11 +53,6 @@
 	clean = git-lfs clean %f
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[github]
-	user = jhchabran
-	oauth-token = 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
-[user]
-	signingkey = 760A6CB63D78428251B1C4A5E5F3206DFB78FD7C
 [pull]
 	rebase = true
 [rebase]
