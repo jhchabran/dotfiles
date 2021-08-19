@@ -1,15 +1,10 @@
 #!/bin/sh
 
 set -e
-
-if [[ -z "$1" ]]; then
-  echo "Usage: $0 \"files...\""
-  echo "For example, to print all go files in the current directory tree, use:"
-  echo "$0 \"**/*.go\""
-fi
+files=$(git ls-files | tr '\n' ' ')
 
 enscript -2R --line-numbers -p - \
   --font="Courier3" \
   --margin=5:5:5:5 \
   --header-font="Courier7" \
-  --word-wrap --color=0 $1 > out.ps
+  --word-wrap --color=0 $files > out.ps
