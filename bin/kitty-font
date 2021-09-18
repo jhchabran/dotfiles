@@ -94,7 +94,7 @@ with open(font_cfg_path, 'w') as f:
     print('switching to ' + fonts[i]["regular"])
     f.write('font_family ' + fonts[i]["regular"])
     f.write("\n")
-    f.write('bold_family ' + fonts[i]["bold"])
+    f.write('bold_font ' + fonts[i]["bold"])
     f.write("\n")
     f.write('macos_thicken_font ' + fonts[i]["thicken"])
 
