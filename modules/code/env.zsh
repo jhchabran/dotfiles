@@ -12,3 +12,6 @@ alias luamake=/Users/tech/code/src/github.com/sumneko/lua-language-server/3rd/lu
 
 # http://asdf-vm.com
 . $(brew --prefix asdf)/asdf.sh
+
+# I always run PG in a container
+export PG_HOST=localhost
