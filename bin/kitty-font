@@ -68,7 +68,7 @@ fonts = [
         {"regular": "Hack Nerd Font Regular", "bold": "Hack Nerd Font Bold", "thicken": "0.2"},
         {"regular": "Inconsolata Nerd Font Mono Medium", "bold": "Inconsolata Nerd Font Mono Bold", "thicken": "0.0"},
         {"regular": "JetBrainsMono Nerd Font Regular", "bold": "JetBrainsMono Nerd Font Bold", "thicken": "0.2"},
-        {"regular": "Lekton Nerd Font Regular", "bold": "Lekton Nerd Font Bold", "thicken": "0.4"},
+        {"regular": "Lekton Nerd Font Mono Regular", "bold": "Lekton Nerd Font Mono Bold", "thicken": "0.4"},
         ]
 
 font_cfg_path = expanduser("~") + '/.config/kitty/font.conf'
