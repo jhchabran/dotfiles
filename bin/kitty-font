@@ -2,51 +2,53 @@
 
 ########### README.md
 ## # Fonts
-## 
+##
 ## `kitty-font.py` allows to change the current font used by [kitty](https://sw.kovidgoyal.net/kitty/). It only works on OSX.
-## 
+##
 ## Because there is, AFAIK, no direct way to achieve that, the script is a mix of python and apple script. Yup, ductape all the way 😆 !
-## 
+##
 ## ## Installation
-## 
-## ### Fonts 
-## 
+##
+## ### Fonts
+##
 ## The script only selects fonts that kitty supports. See my [Brewfile](./Brewfile) for a list of fonts. These can be installed by running `brew bundle install` in this directory.
-## 
+##
 ## ### Setup
-## 
-## In order to work, the script requires a specific config file for the kitty font to be present: 
-## 
+##
+## In order to work, the script requires a specific config file for the kitty font to be present (will be created for you if it doesn't exist):
+##
 ## ```
-## $ cat ~/.config/kitty/font.conf 
+## $ cat ~/.config/kitty/font.conf
 ## font_family Inconsolata
+## bold_family Inconsolata Bold
+## macos_thicken_font 0.4
 ## ```
-## 
-## That config must be included from the main kitty configuration: 
-## 
+##
+## That config must be included from the main kitty configuration:
+##
 ## ```
-## $ cat ~/.config/kitty/kitty.conf 
+## $ cat ~/.config/kitty/kitty.conf
 ## include font.conf # <---- the mandatory include statement
 ## bold auto
 ## italic_font auto
 ## bold_italic_font auto
-## 
+##
 ## # (...)
 ## ```
-## 
+##
 ## ## Running
-## 
-## Simply calling `kitty-font.py` or `kitty-font.py prev` will: 
-## 
+##
+## Simply calling `kitty-font.py` or `kitty-font.py prev` will:
+##
 ## 1. Get a list of fonts (statically assigned)
 ## 2. Find the next one in the above list of fonts, based on the current one.
 ## 3. Edit the font configuration file (`font.conf` in the kitty config directory)
 ## 4. Run some apple script that will tell kitty to reload its configuration.
-## 
+##
 ## ### Useful bindings
-## 
-## Adding some mappings to the kitty configuration make the whole process really easy: 
-## 
+##
+## Adding some mappings to the kitty configuration make the whole process really easy:
+##
 ## ```
 ## map cmd+y launch --copy-env kitty-font
 ## map cmd+u launch --copy-env kitty-font prev
@@ -60,18 +62,14 @@ import sys
 from os.path import expanduser
 
 fonts = [
-        "Anonymice Nerd Font Regular",
-        "BlexMono Nerd Font Book",
-        "CaskaydiaCove Nerd Font Book",
-        "FiraCode Nerd Font Retina",
-        "FiraMono Nerd Font Regular",
-        "GoMono Nerd Font Mono Book",
-        "Hack Nerd Font Regular",
-        "Hasklug Nerd Font Regular",
-        "Inconsolata Nerd Font Medium",
-        "JetBrainsMono Nerd Font Regular",
-        "Lekton Nerd Font",
-        "OverpassMono Nerd Font Regular"]
+        {"regular": "BlexMono Nerd Font Book", "bold": "BlexMono Nerd Font Bold", "thicken": "0.2"},
+        {"regular": "FiraMono Nerd Font Regular", "bold": "FiraMono Nerd Font Bold", "thicken": "0.3"},
+        {"regular": "GoMono Nerd Font Mono Book", "bold": "GoMono Nerd Font Mono Bold", "thicken": "0.0"},
+        {"regular": "Hack Nerd Font Regular", "bold": "Hack Nerd Font Bold", "thicken": "0.2"},
+        {"regular": "Inconsolata Nerd Font Mono Medium", "bold": "Inconsolata Nerd Font Mono Bold", "thicken": "0.0"},
+        {"regular": "JetBrainsMono Nerd Font Regular", "bold": "JetBrainsMono Nerd Font Bold", "thicken": "0.2"},
+        {"regular": "Lekton Nerd Font Regular", "bold": "Lekton Nerd Font Bold", "thicken": "0.4"},
+        ]
 
 font_cfg_path = expanduser("~") + '/.config/kitty/font.conf'
 direction = -1 if len(sys.argv) > 1 and sys.argv[1] == "prev" else 1
@@ -88,16 +86,17 @@ def current_font():
 current = current_font()
 
 # Locate the index of the current one
-try:
-    idx = fonts.index(current)
-except ValueError:
-    idx = 0
+idx = next((index for (index, f) in enumerate(fonts) if f["regular"] == current), 0)
 
 # Set the next font as the current one
 with open(font_cfg_path, 'w') as f:
     i = (idx + direction) % len(fonts)
-    print('switching to ' + fonts[i])
-    f.write('font_family ' + fonts[i])
+    print('switching to ' + fonts[i]["regular"])
+    f.write('font_family ' + fonts[i]["regular"])
+    f.write("\n")
+    f.write('bold_family ' + fonts[i]["bold"])
+    f.write("\n")
+    f.write('macos_thicken_font ' + fonts[i]["thicken"])
 
 # Run some apple script to tell kitty to reload the config
 script = """
