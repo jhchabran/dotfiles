@@ -67,4 +67,7 @@ export PROMPT=$'$(directory_name)%{$fg_bold[cyan]%}${vcs_info_msg_1_}%{$reset_co
 
 precmd() {
   vcs_info
+  # Set title to current working directory; see man zshmisc for details
+  # on how %~ is expanded.
+  print -Pn "\e]0;%3~\a"
 }
