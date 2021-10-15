@@ -5,12 +5,13 @@
         protocol = https
 [alias]
         co = checkout
-        promote = !$DOTFILES_PATH/bin/git-promote
-        wtf     = !$DOTFILES_PATH/bin/git-wtf
-        rank-contributors = !$DOTFILES_PATH/bin/git-rank-contributors
+        st = status
+        sw = switch
+        br = branch
+        lbr = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
         count   = !git shortlog -sn
-
-        glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+        last = log -1 HEAD --stat
+        ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
         # No need for a GUI - a nice, colorful, graphical representation
         # https://git-scm.com/docs/git-log
         # via https://medium.com/@payload.dd/thanks-for-the-git-st-i-will-use-this-4da5839a21a4
@@ -63,7 +64,7 @@
 	cookiefile = /Users/tech/.gitcookies
 
 [pager]
-    diff = delta
+    # diff = delta
     log = delta
     reflog = delta
     show = delta
