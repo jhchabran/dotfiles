@@ -21,7 +21,6 @@ Clone this repository to ~/.dotfiles
 git clone git@github.com:jhchabran/dotfiles.git ~/.dotfiles
 ```
 
-
 Then install the dotfiles:
 ```
 ~/.dotfiles/setup.sh
@@ -37,13 +36,16 @@ dotfiles-update
 
 ### Dependencies
 
-- https://github.com/dandavison/delta
+- [Delta](https://github.com/dandavison/delta)
+- [Kitty](https://sw.kovidgoyal.net/kitty)
+- [Ripgrep](https://github.com/BurntSushi/ripgrep)
 
 ## Workflow
 
 A typical session looks like the following: 
 
-1. `j PROJECT-NAME`, where `PROJECT-NAME` is often shortened and mistyped. It's like a better `cd` that remembers folders that you often use.
+1. `cmd+e` to fuzzy find within a list of both work and personal repositories and either open a new terminal (window in Kitty's jargon) or jump on that terminal if it already exists.
+  - That's basically the same thing as [`tmux-sessionizer`](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/bin/tmux-sessionizer), but with kitty [see the script](bin/kitty-sessionizer).
 2. `vi`, which will launch _neovim_ in the project root. It'll restore the previous session (opened files and buffers) automatically.
 3. open another terminal within _neovim_ when needed
 
@@ -59,6 +61,7 @@ Frequently, I'm searching for something:
 
 When it comes to git, it's pretty vanilla:
 - straight `git` commands, aliasing only confuses me, I never seem to remember them. 
+- `gco` to switch branches with fuzzy finding
 - _delta_ to provide more readable diffs, and I really like the side by side view.
 - half the time, git commands are performed within the editor, with plugins.
 
@@ -66,7 +69,7 @@ Multitasking:
 
 - _kitty_ provides tabs and splits, which is largely enough for me. 
   - I have been a heavy _tmux_ user for years but I don't use it anymore, it always felt like a broken abstraction.
-- I use _magnet_ to provide a kind-of tiling WM experience, it's largely enough.
+- I use _magnet_ to provide a kind-of tiling WM experience.
 
 ## Licence
 

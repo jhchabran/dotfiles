@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -eu
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find ~/code/src/github.com/sourcegraph ~/code/src/github.com/jhchabran -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+selected=${selected/$HOME/\~}
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+if kitty @ ls | jq '.[].tabs[].windows[].title' | grep $selected; then
+  kitty @ focus-window --match title:$selected
+else
+  kitty @ launch --type tab --title $selected --cwd $selected
+fi
+kitty @ close-window --match title:sessionizer
