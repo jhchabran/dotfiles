@@ -5,6 +5,7 @@
         protocol = https
 [alias]
         co = checkout
+        cob = checkout -b
         st = status
         sw = switch
         br = branch
@@ -81,3 +82,7 @@
     syntax-theme = none
     side-by-side = true
 
+[commit]
+	gpgsign = true
+[user]
+	signingkey = 93C0CA664CFA0883
