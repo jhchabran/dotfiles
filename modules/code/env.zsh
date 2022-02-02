@@ -11,7 +11,7 @@ export KITTY_LISTEN_ON="unix:/tmp/mykitty"
 alias luamake=/Users/tech/code/src/github.com/sumneko/lua-language-server/3rd/luamake/luamake
 
 # http://asdf-vm.com
-. $(brew --prefix asdf)/asdf.sh
+. $HOME/.asdf/asdf.sh
 
 # I always run PG in a container
 export PG_HOST=localhost
