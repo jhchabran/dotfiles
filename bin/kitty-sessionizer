@@ -5,7 +5,7 @@ set -eu
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/code/src/github.com/sourcegraph ~/code/src/github.com/jhchabran -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/work ~/perso ~/play ~/src -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 selected=${selected/$HOME/\~}
