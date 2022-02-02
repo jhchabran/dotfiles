@@ -2,13 +2,13 @@
 set -e
 
 cd "$(dirname "$0")"
-export DOTFILES_PATH=$HOME/.dotfiles
+export DOTFILES_PATH=$HOME/perso/dotfiles
 export PATH=$DOTFILES_PATH/bin:$PATH
 
 for file in $DOTFILES_PATH/modules/*/install.sh; do
-	announce "Installing module $file"
+	echo "Installing module $file"
 	bash $file
 done
 
-announce "Creating/Updating symlinks"
+echo "Creating/Updating symlinks"
 ./update_symlinks.sh

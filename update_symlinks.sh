@@ -2,11 +2,11 @@
 set -e
 
 cd "$(dirname "$0")"
-export DOTFILES_PATH=$HOME/.dotfiles
+export DOTFILES_PATH=$HOME/perso/dotfiles
 export PATH=$DOTFILES_PATH/bin:$PATH
 
 link_file () {
-  announce "linking $1 to $2"
+  echo "linking $1 to $2"
   local src=$1 dst=$2
   local overwrite= backup= skip=
   local action=
@@ -20,7 +20,7 @@ link_file () {
       then
         skip=true;
       else
-        announce "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        echo "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?" 1
         read -n 1 action
         case "$action" in
@@ -49,7 +49,7 @@ link_file () {
     if [ "$overwrite" == "true" ]
     then
       rm -rf "$dst"
-      announce "removed $dst" 2
+      echo "removed $dst" 2
     fi
 
     if [ "$backup" == "true" ]
@@ -72,7 +72,7 @@ link_file () {
 }
 
 install_dotfiles () {
-  announce 'installing dotfiles' 1
+  echo 'installing dotfiles' 1
   local overwrite_all=false backup_all=false skip_all=false
   for src in $(find -H "$DOTFILES_PATH/modules" -maxdepth 2 -name '*.symlink' -not -path '*.git*' | grep -v modules/config)
   do
