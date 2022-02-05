@@ -8,7 +8,8 @@ fpath=($DOTFILES_PATH/functions $fpath)
 autoload -U $DOTFILES_PATH/functions/*(:t)
 
 # Use vi-mode for line editing (zle)
-bindkey -v
+# This creates a very confusing behaviour when running a terminal within Neovim
+# bindkey -v
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
