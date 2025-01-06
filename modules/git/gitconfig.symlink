@@ -84,5 +84,4 @@
 
 [commit]
 	gpgsign = true
-[user]
-	signingkey = 93C0CA664CFA0883
+
